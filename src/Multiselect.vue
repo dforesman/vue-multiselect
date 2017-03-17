@@ -33,6 +33,8 @@
           <slot name="loading"><div v-show="loading" class="multiselect__spinner"></div></slot>
         </transition>
         <input
+          :id="inputId"
+          :required="required"
           ref="search"
           type="text"
           autocomplete="off"
@@ -111,6 +113,24 @@
     name: 'vue-multiselect',
     mixins: [multiselectMixin, pointerMixin],
     props: {
+      /**
+       * Boolean whether to apply the 'required' attribute to the rendered <input>
+       * @default false
+       * @type {Boolean}
+       */
+      required: {
+        type: Boolean,
+        default: false
+      },
+      /**
+       * String to apply an HTML ID to the rendered input
+       * @default ''
+       * @type {String}
+       */
+      inputId: {
+        type: String,
+        default: ''
+      },
       /**
        * String to show when pointing to an option
        * @default 'Press enter to select'
